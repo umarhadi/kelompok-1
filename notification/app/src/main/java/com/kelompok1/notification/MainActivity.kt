@@ -1,39 +1,55 @@
 package com.kelompok1.notification
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import android.app.Notification
+import android.view.View
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
-    companion object {
-        private const val CHANNEL_ID = "notif_app"
-        private const val NOTIFICATION_ID = 999
-    }
- //   var btnNotif: Button? = null
+class MainActivity : AppCompatActivity() {
+
+    private var notificationManager: NotificationManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btnNotif: Button = findViewById(R.id.buttonNotif)
-        btnNotif.setOnClickListener(this)
+        notificationManager =
+                getSystemService(
+                        Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        createNotificationChannel(
+                "com.kelompok1.notification.send",
+                "Notification",
+                "Send Notification")
     }
 
+    private fun createNotificationChannel(id: String, name: String, description: String) {
 
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.buttonNotif -> {
-                val builder = NotificationCompat.Builder(this@MainActivity, CHANNEL_ID)
-                builder.setSmallIcon(R.drawable.ic_notification)
-                builder.setContentTitle("Kelompok 1")
-                builder.setContentText("Ini adalah Notification")
-                builder.priority = NotificationCompat.PRIORITY_HIGH
-                val notificationManagerCompat = NotificationManagerCompat.from(this@MainActivity)
-                notificationManagerCompat.notify(NOTIFICATION_ID, builder.build())
-            }
-        }
+        val importance = NotificationManager.IMPORTANCE_HIGH
+        val channel = NotificationChannel(id, name, importance)
+
+        channel.description = description
+        channel.enableLights(true)
+        channel.lightColor = Color.RED
+        channel.enableVibration(true)
+        channel.vibrationPattern =
+                longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
+        notificationManager?.createNotificationChannel(channel)
+    }
+    fun sendNotification(view: View) {
+        val notificationID = 101
+        val channelID = "com.kelompok1.notification.send"
+        val notification = Notification.Builder(this@MainActivity,
+                channelID)
+                .setContentTitle("Notifikasi Kelompok 1")
+                .setContentText("Ini adalah Notifikasi")
+                .setSmallIcon(R.drawable.ic_notification)
+                .setChannelId(channelID)
+                .build()
+        notificationManager?.notify(notificationID, notification)
     }
 }
