@@ -10,7 +10,7 @@ import android.app.Notification
 import android.view.View
 
 class MainActivity : AppCompatActivity() {
-
+    /*deklarasi NotificationManager */
     private var notificationManager: NotificationManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         notificationManager =
                 getSystemService(
                         Context.NOTIFICATION_SERVICE) as NotificationManager
-
+        /* membuat Notification Channel*/
         createNotificationChannel(
                 "com.kelompok1.notification.send",
                 "Notification",
