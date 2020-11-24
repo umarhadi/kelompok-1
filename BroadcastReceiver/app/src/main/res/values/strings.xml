@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Broadcast Receiver</string>
     <string name="this_sms_receiver_app">Ini Aplikasi SMS Receiver</string>
-    <string name="download_file">Download a File</string>
     <string name="coming_from">Dari</string>
     <string name="this_play">Tugasnya gimana?.</string>
     <string name="close">Tutup</string>
     <string name="check_sms_permission">Check SMS Permission</string>
-    <string name="from">from : %s</string>
-    <string name="incoming_message">Incoming Message</string>
+    <string name="from">dari : %s</string>
+    <string name="incoming_message">SMS Masuk</string>
 </resources>
