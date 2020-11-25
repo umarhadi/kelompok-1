@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                 longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
         notificationManager?.createNotificationChannel(channel)
     }
+    /*Method sendNotification yang akan dipanggil oleh attribute onClick pada button di activity_main.xml*/
     fun sendNotification(view: View) {
         val notificationID = 101
         val channelID = "com.kelompok1.notification.send"
