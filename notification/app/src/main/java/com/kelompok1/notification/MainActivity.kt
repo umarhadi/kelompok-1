@@ -18,10 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        /* membuat Notification Channel*/
         createNotificationChannel("com.kelompok1.notification.send", "Notification", "Send Notification")
     }
-
+    /* membuat Notification Channel*/
     private fun createNotificationChannel(id: String, name: String, description: String) {
 
         val importance = NotificationManager.IMPORTANCE_DEFAULT
