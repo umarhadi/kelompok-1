@@ -17,14 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        notificationManager =
-                getSystemService(
-                        Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         /* membuat Notification Channel*/
-        createNotificationChannel(
-                "com.kelompok1.notification.send",
-                "Notification",
-                "Send Notification")
+        createNotificationChannel("com.kelompok1.notification.send", "Notification", "Send Notification")
     }
 
     private fun createNotificationChannel(id: String, name: String, description: String) {
@@ -36,8 +31,7 @@ class MainActivity : AppCompatActivity() {
         channel.enableLights(true)
         channel.lightColor = Color.RED
         channel.enableVibration(true)
-        channel.vibrationPattern =
-                longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
+        channel.vibrationPattern = longArrayOf(100, 200, 300, 400, 500, 400, 300, 200, 400)
         notificationManager?.createNotificationChannel(channel)
     }
     /*Method sendNotification yang akan dipanggil oleh attribute onClick pada button di activity_main.xml*/
